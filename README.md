@@ -2,7 +2,7 @@
 
 This Python app is a simple restaurant review application built with the [Django](https://www.djangoproject.com/) framework. The app stores application data in PostgreSQL with environment variables defining the connection info.
 
-This repo was created to be built to a Docker image and run as a container instance in [Azure Container Apps](https://azure.microsoft.com/services/container-apps/). For more information, see the tutorial [TBD][TBD].
+This repo was created to be built to a Docker image and run as a container instance in [Azure Container Apps](https://azure.microsoft.com/services/container-apps/). For more information, see the tutorial [Deploy a Python web app on Azure Container Apps and GitHub Actions][https://learn.microsoft.com/azure/developer/python/tutorial-deploy-python-web-app-azure-container-apps-01].
 
 This Python web app repo can also be used in other ways:
 
@@ -19,11 +19,11 @@ This Python web app repo can also be used in other ways:
 
 * You can deploy the code (not a container) to App Service. For guidance on how to deploy code, see [Quickstart: Deploy a Python (Django or Flask) web app to Azure App Service](https://docs.microsoft.com/azure/app-service/quickstart-python) and [Overview: Deploy a Python web app to Azure with managed identity](https://docs.microsoft.com/azure/developer/python/tutorial-python-managed-identity-01).
 
-* You can create a Docker image from this repo and host the container image in Web Apps for Containers (App Service). See [Overview: Containerized Python web app on Azure](https://docs.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-01).
+* You can create a Docker image from this repo and host the container image in Web Apps for Containers (App Service). See [Containerized Python web app on Azure](https://docs.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-01).
 
 If you need an Azure account, you can [create on for free](https://azure.microsoft.com/free/).
 
-A Flask sample application with similar functionality is at **TBD**.
+A Flask sample application with similar functionality is at https://github.com/Azure-Samples/msdocs-python-flask-azure-container-apps.
 
 ## Requirements
 
@@ -40,7 +40,7 @@ The [requirements.txt](./requirements.txt) has the following packages:
 
 ## Deploying to Azure Container Apps
 
-The steps to do this are covered more completely in the **TBD** tutorial. Briefly, here are the steps:
+The steps to do this are covered more completely in the tutorial [Containerized Python web app on Azure](https://docs.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-01). Briefly, here are the steps:
 
 1. Fork and then clone locally.
 1. Build a container image from the repo.
