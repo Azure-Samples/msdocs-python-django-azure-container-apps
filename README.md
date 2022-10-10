@@ -1,57 +1,50 @@
-# Project Name
+# Deploy a Python (Django) app to Azure to Azure Containers Apps
 
-(short, 1-3 sentenced, description of the project)
+This Python app is a simple restaurant review application built with the [Django](https://www.djangoproject.com/) framework. The app stores application data in PostgreSQL with environment variables defining the connection info.
 
-## Features
+This repo was created to be built to a Docker image and run as a container instance in [Azure Container Apps](https://azure.microsoft.com/services/container-apps/). For more information, see the tutorial [TBD][TBD].
 
-This project framework provides the following features:
+This Python web app repo can also be used in other ways:
 
-* Feature 1
-* Feature 2
-* ...
+* You can run the web app locally in a virtual environment. Make sure to define *.env* file with environment settings.
 
-## Getting Started
+* You can create a container locally and run it in Docker locally. You'll need Docker Desktop installed. For this scenario, set REMOTE_POSTGRESQL=1 in *.env* file to point to a PostgreSQL instance. See the *.env.example* file for details.
 
-### Prerequisites
+  ```bash
+  docker build --file Dockerfile --tag pythoncontainer:latest .
+  docker run -it --env-file .env --publish 5000:5000/tcp pythoncontainer:latest
+  ```
 
-(ideally very short, if any)
+  If you want to use PostgreSQL instance locally, you add `--add-host` to the Docker command. For more information, see the [Docker run](https://docs.docker.com/engine/reference/commandline/run/) command. For an example of how to do this with MongoDB, see [Build and test a containerized Python web app locally](https://docs.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-02).
 
-- OS
-- Library version
-- ...
+* You can deploy the code (not a container) to App Service. For guidance on how to deploy code, see [Quickstart: Deploy a Python (Django or Flask) web app to Azure App Service](https://docs.microsoft.com/azure/app-service/quickstart-python) and [Overview: Deploy a Python web app to Azure with managed identity](https://docs.microsoft.com/azure/developer/python/tutorial-python-managed-identity-01).
 
-### Installation
+* You can create a Docker image from this repo and host the container image in Web Apps for Containers (App Service). See [Overview: Containerized Python web app on Azure](https://docs.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-01).
 
-(ideally very short)
+If you need an Azure account, you can [create on for free](https://azure.microsoft.com/free/).
 
-- npm install [package name]
-- mvn install
-- ...
+A Flask sample application with similar functionality is at **TBD**.
 
-### Quickstart
-(Add steps to get up and running quickly)
+## Requirements
 
-1. git clone [repository clone url]
-2. cd [repository name]
-3. ...
+The [requirements.txt](./requirements.txt) has the following packages:
 
+| Package | Description |
+| ------- | ----------- |
+| [Django](https://pypi.org/project/Django/) | Web application framework. |
+| [pyscopg2-binary](https://pypi.org/project/psycopg-binary/) | PostgreSQL database adapter for Python. |
+| [gunicorn](https://pypi.org/project/gunicorn/) | WSGI HTTP Server for UNIX. Required for running containers in [VS Code](https://code.visualstudio.com/docs/containers/quickstart-python#_gunicorn-modifications-for-djangoflask-apps).|
+| [python-dotenv](https://pypi.org/project/python-dotenv/) | Read key-value pairs from .env file and set them as environment variables. In this sample app, environment variables describe how to connect to the database and storage resources. Because managed identity is used no sensitive information is included in environment variables. <br><br> This package is used in the [manage.py](./manage.py) file to load environment variables. |
+| [requests](https://pypi.org/project/requests/) | Python HTTP for Humans. |
+| [whitenoise](https://pypi.org/project/whitenoise/) | Static file serving for WSGI applications, used in the deployed app. <br><br> This package is used in the [azureproject/production.py](./azureproject/production.py) file, which configures production settings. |
 
-## Demo
+## Deploying to Azure Container Apps
 
-A demo app is included to show how to use the project.
+The steps to do this are covered more completely in the **TBD** tutorial. Briefly, here are the steps:
 
-To run the demo, follow these steps:
-
-(Add steps to start up the demo)
-
-1.
-2.
-3.
-
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+1. Fork and then clone locally.
+1. Build a container image from the repo.
+1. Create a PostgreSQL Flexible Server instance.
+1. Create a database on the server.
+1. Deploy the web app container to Azure Container Apps.
+1. Configure continuous deployment.
