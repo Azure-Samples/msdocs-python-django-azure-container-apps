@@ -2,7 +2,7 @@
 
 This Python app is a simple restaurant review application built with the [Django](https://www.djangoproject.com/) framework. The app stores application data in PostgreSQL with environment variables defining the connection info.
 
-This repo was created to be built to a Docker image and run as a container instance in [Azure Container Apps](https://azure.microsoft.com/services/container-apps/). For more information, see the tutorial [Deploy a Python web app on Azure Container Apps and GitHub Actions][https://learn.microsoft.com/azure/developer/python/tutorial-deploy-python-web-app-azure-container-apps-01].
+This repo was created to be built to a Docker image and run as a container instance in [Azure Container Apps](https://azure.microsoft.com/services/container-apps/). For more information, see the tutorial [Deploy a Python web app on Azure Container Apps with GitHub Actions][https://learn.microsoft.com/azure/developer/python/tutorial-deploy-python-web-app-azure-container-apps-01].
 
 This Python web app repo can also be used in other ways:
 
@@ -40,7 +40,7 @@ The [requirements.txt](./requirements.txt) has the following packages:
 
 ## Deploying to Azure Container Apps
 
-The steps to do this are covered more completely in the tutorial [Containerized Python web app on Azure](https://docs.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-01). Briefly, here are the steps:
+The steps to do this are covered more completely in the tutorial [Deploy a Python web app on Azure Container Apps with GitHub Actions][https://learn.microsoft.com/azure/developer/python/tutorial-deploy-python-web-app-azure-container-apps-01]. Briefly, here are the steps:
 
 1. Fork and then clone locally.
 1. Build a container image from the repo.
