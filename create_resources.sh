@@ -103,6 +103,7 @@ az containerapp create \
 --environment $CONTAINER_ENV_NAME \
 --ingress external \
 --target-port $TARGET_PORT \
+--min-replicas 1 \
 --registry-server $REGISTRY_NAME.azurecr.io \
 --registry-username $ACR_USERNAME \
 --registry-password $ACR_PASSWORD \
@@ -114,3 +115,4 @@ echo "INFO:: If using Django, connect to the container and migrate the schema."
 echo "INFO:: Use the following command:"
 echo "INFO:: az containerapp exec --name $CONTAINER_APP_NAME --resource-group $RESOURCE_GROUP"
 echo "INFO:: Then, run 'python manage.py migrate'."
+echo "INFO:: Then, type 'exit'."
