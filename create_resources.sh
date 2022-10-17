@@ -103,6 +103,7 @@ az containerapp create \
 --environment $CONTAINER_ENV_NAME \
 --ingress external \
 --target-port $TARGET_PORT \
+--min-replicas 1 \
 --registry-server $REGISTRY_NAME.azurecr.io \
 --registry-username $ACR_USERNAME \
 --registry-password $ACR_PASSWORD \
