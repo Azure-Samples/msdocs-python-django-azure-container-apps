@@ -48,3 +48,5 @@ The steps to do this are covered more completely in the tutorial [Deploy a Pytho
 1. Create a database on the server.
 1. Deploy the web app container to Azure Container Apps.
 1. Configure continuous deployment.
+
+See the [create_resources.sh](./create_resources.sh) Bash script for automating the creation of these steps.
