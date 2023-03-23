@@ -8,6 +8,13 @@ This Python web app repo can also be used in other ways:
 
 * You can run the web app locally in a virtual environment. Make sure to define *.env* file with environment settings.
 
+    * In the `.env` file, fill in a secret value for `SECRET_KEY`. You can use this command to generate an appropriate value for your product deployment:
+
+    ```shell
+    python -c 'import secrets; print(secrets.token_hex())'
+    ```
+
+
 * You can create a container locally and run it in Docker locally. You'll need Docker Desktop installed. For this scenario, set REMOTE_POSTGRESQL=1 in *.env* file to point to a PostgreSQL instance. See the *.env.example* file for details.
 
   ```bash

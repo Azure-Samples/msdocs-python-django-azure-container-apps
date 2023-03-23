@@ -4,6 +4,8 @@ from .settings import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SECRET_KEY = os.getenv('LOCAL_SECRET_KEY')
+
 # Don't use Whitenoise to avoid having to run collectstatic first.
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 

@@ -7,6 +7,11 @@ CSRF_TRUSTED_ORIGINS = ['https://*.azurecontainerapps.io'] if 'RUNNING_IN_PRODUC
 DEBUG = False
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
+# SECURITY WARNING: keep the secret key used in production secret!
+# Use this py command to create secret 
+# python -c 'import secrets; print(secrets.token_hex())'
+SECRET_KEY = os.getenv('AZURE_SECRET_KEY')
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Configure database connection for Azure PostgreSQL Flexible server instance.
