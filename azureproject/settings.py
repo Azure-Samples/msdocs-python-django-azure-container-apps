@@ -4,7 +4,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7ppocbnx@w71dcuinn*t^_mzal(t@o01v3fee27g%rg18fc5d@'
+# Use this py command to create secret 
+# python -c 'import secrets; print(secrets.token_hex())'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Application definition
 INSTALLED_APPS = [
