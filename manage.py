@@ -14,7 +14,8 @@ def main():
         load_dotenv('./.env')
 
     # When running on Azure App Service you should use the production settings.
-    settings_module = "azureproject.production" if 'RUNNING_IN_PRODUCTION' in os.environ else 'azureproject.development'
+    # settings_module = "azureproject.production" if 'RUNNING_IN_PRODUCTION' in os.environ else 'azureproject.development'
+    settings_module = "azureproject.settings"
     print("Settings file: " + settings_module)
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 

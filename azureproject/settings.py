@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # Use this py command to create secret 
 # python -c 'import secrets; print(secrets.token_hex())'
-SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Application definition
 INSTALLED_APPS = [
@@ -93,3 +93,68 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if 'RUNNING_IN_PRODUCTION' in os.environ:
+    # Configure allowed host names that can be served and trusted origins for Azure Container Apps.
+    ALLOWED_HOSTS = ['.azurecontainerapps.io']
+    CSRF_TRUSTED_ORIGINS = ['https://*.azurecontainerapps.io']
+    DEBUG = False
+    DEBUG_PROPAGATE_EXCEPTIONS = True
+
+    # SECURITY WARNING: keep the secret key used in production secret!
+    # Use this py command to create secret 
+    # python -c 'import secrets; print(secrets.token_hex())'
+    SECRET_KEY = os.getenv('AZURE_SECRET_KEY')
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+    # Configure database connection for Azure PostgreSQL Flexible server instance.
+    # AZURE_POSTGRESQL_HOST is the full URL.
+    # AZURE_POSTGRESQL_USERNAME is just name without @server-name.
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['AZURE_POSTGRESQL_DATABASE'],
+            'HOST': os.environ['AZURE_POSTGRESQL_HOST'],
+            'USER': os.environ['AZURE_POSTGRESQL_USERNAME'],
+            'PASSWORD': os.environ['AZURE_POSTGRESQL_PASSWORD'], 
+        }
+    }
+else:
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+
+    # Use this py command to create secret 
+    # python -c 'import secrets; print(secrets.token_hex())'
+    SECRET_KEY = os.getenv('LOCAL_SECRET_KEY')
+
+    # Don't use Whitenoise to avoid having to run collectstatic first.
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+    ALLOWED_HOSTS = ['*']
+
+    # Configure connection setting for local PostgreSQL instance.
+    # Set these environment variables in the .env file for this project.  
+
+    # Local to instance settings.
+    DBHOST=os.environ['LOCAL_HOST']
+    DBNAME=os.environ['LOCAL_DATABASE']
+    DBUSER=os.environ['LOCAL_USERNAME']
+    DBPASS=os.environ['LOCAL_PASSWORD']
+
+    # Configure database connection for remote PostgreSQL instance.
+    if 'USE_REMOTE_POSTGRESQL' in os.environ:
+        DBNAME=os.environ['AZURE_POSTGRESQL_DATABASE']
+        DBHOST=os.environ['AZURE_POSTGRESQL_HOST']
+        DBUSER=os.environ['AZURE_POSTGRESQL_USERNAME']
+        DBPASS=os.environ['AZURE_POSTGRESQL_PASSWORD']
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': DBNAME,
+            'HOST': DBHOST,
+            'USER': DBUSER,
+            'PASSWORD': DBPASS,
+        }
+    }
