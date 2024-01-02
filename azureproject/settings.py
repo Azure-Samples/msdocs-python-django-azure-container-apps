@@ -133,21 +133,20 @@ else:
 
     ALLOWED_HOSTS = ['*']
 
-    # Configure connection setting for local PostgreSQL instance.
+    # Configure connection setting for PostgreSQL instance.
     # Set these environment variables in the .env file for this project.  
-
-    # Local to instance settings.
-    DBHOST=os.environ['LOCAL_HOST']
-    DBNAME=os.environ['LOCAL_DATABASE']
-    DBUSER=os.environ['LOCAL_USERNAME']
-    DBPASS=os.environ['LOCAL_PASSWORD']
-
-    # Configure database connection for remote PostgreSQL instance.
     if 'USE_REMOTE_POSTGRESQL' in os.environ:
+        # Configure database connection for remote PostgreSQL instance.
         DBNAME=os.environ['AZURE_POSTGRESQL_DATABASE']
         DBHOST=os.environ['AZURE_POSTGRESQL_HOST']
         DBUSER=os.environ['AZURE_POSTGRESQL_USERNAME']
         DBPASS=os.environ['AZURE_POSTGRESQL_PASSWORD']
+    else:
+        # Local to instance settings.
+        DBHOST=os.environ['LOCAL_HOST']
+        DBNAME=os.environ['LOCAL_DATABASE']
+        DBUSER=os.environ['LOCAL_USERNAME']
+        DBPASS=os.environ['LOCAL_PASSWORD']
 
     DATABASES = {
         'default': {
