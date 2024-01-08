@@ -21,8 +21,6 @@ This Python web app repo can also be used in other ways:
   docker run -it --env-file .env --publish 8000:8000/tcp pythoncontainer:latest
   ```
 
-  If you want to use a PostGreSQL instance hosted in Azure, you need to ensure that the firewall of your Azure Database for PostGreSQL - Flexible Server instance contains a rule that allows your container or service running locally to connect. To learn more, see [Create and manage firewall rules for Azure Database for PostgreSQL - Flexible Server using the Azure portal](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-manage-firewall-portal) or [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using the Azure CLI](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-manage-firewall-cli).
-
   If you want to use PostgreSQL instance locally, you add `--add-host` to the Docker command. For more information, see the [Docker run](https://docs.docker.com/engine/reference/commandline/run/) command. For an example of how to do this with MongoDB, see [Build and test a containerized Python web app locally](https://learn.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-02).
 
 * You can deploy the code (not a container) to App Service. For guidance on how to deploy code, see [Quickstart: Deploy a Python (Django or Flask) web app to Azure App Service](https://learn.microsoft.com/azure/app-service/quickstart-python) and [Overview: Deploy a Python web app to Azure with managed identity](https://learn.microsoft.com/azure/developer/python/tutorial-python-managed-identity-01).
@@ -30,6 +28,8 @@ This Python web app repo can also be used in other ways:
 * You can create a Docker image from this repo and host the container image in Web Apps for Containers (App Service). See [Containerized Python web app on Azure](https://learn.microsoft.com/azure/developer/python/tutorial-containerize-deploy-python-web-app-azure-01).
 
 If you need an Azure account, you can [create on for free](https://azure.microsoft.com/free/).
+
+If you're running locally -- from either a virtual environment or a container -- and want to use a PostGreSQL instance hosted in Azure, you need to ensure that the firewall of your Azure Database for PostGreSQL - Flexible Server instance contains a rule that allows your web app to connect. To learn more, see [Create and manage firewall rules for Azure Database for PostgreSQL - Flexible Server using the Azure portal](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-manage-firewall-portal) or [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using the Azure CLI](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-manage-firewall-cli).
 
 A Flask sample application with similar functionality is at https://github.com/Azure-Samples/msdocs-python-flask-azure-container-apps.
 
