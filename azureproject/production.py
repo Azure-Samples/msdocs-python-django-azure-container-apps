@@ -5,7 +5,7 @@ from .get_token import get_token
 from .settings import *
 
 # Configure allowed host names that can be served and trusted origins for Azure Container Apps.
-ALLOWED_HOSTS = ['.azurecontainerapps.io'] if 'RUNNING_IN_PRODUCTION' in os.environ else []
+ALLOWED_HOSTS = ['.azurecontainerapps.io'] if 'RUNNING_IN_PRODUCTION' in os.environ else ['python-container-app.wittyforest-26fd6d90.westus.azurecontainerapps.io']
 CSRF_TRUSTED_ORIGINS = ['https://*.azurecontainerapps.io'] if 'RUNNING_IN_PRODUCTION' in os.environ else []
 DEBUG = False
 DEBUG_PROPAGATE_EXCEPTIONS = True
