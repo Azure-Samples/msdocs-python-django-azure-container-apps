@@ -9,6 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # python -c 'import secrets; print(secrets.token_hex())'
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+ALLOWED_HOSTS = ['*']
+print("ALLOWED_HOSTS set to *")
+
 # Application definition
 INSTALLED_APPS = [
     'restaurant_review.apps.RestaurantReviewConfig',
