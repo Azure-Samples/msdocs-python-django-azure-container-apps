@@ -24,7 +24,7 @@ DATABASES = {
         'NAME': os.environ['DBNAME'],
         'HOST': os.environ['DBHOST'] + ".postgres.database.azure.com",
         'USER': os.environ['DBUSER'],
-        'PASSWORD': 'set with get_token()'
+        'PASSWORD': 'mickey'
     }
 }
 get_token()
