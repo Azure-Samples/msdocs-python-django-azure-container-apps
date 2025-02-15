@@ -22,13 +22,24 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Configure database connection for Azure PostgreSQL Flexible server instance.
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.environ['DBNAME'],
+    #     'HOST': os.environ['DBHOST'] + ".postgres.database.azure.com",
+    #     'USER': os.environ['DBUSER'],
+    #     'PASSWORD': 'mickey'
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DBNAME'],
-        'HOST': os.environ['DBHOST'] + ".postgres.database.azure.com",
-        'USER': os.environ['DBUSER'],
-        'PASSWORD': 'mickey'
-    }
+        'ENGINE': 'mssql',
+        'NAME': os.getenv("DBNAME"),
+        'HOST': os.getenv("DBHOST"),
+        'PORT': '1433',
+        'USER': os.getenv("DBUSER"),
+        'PASSWORD': os.getenv("DBPASSWORD"),
+        'OPTIONS': {
+	            'driver': 'ODBC Driver 17 for SQL Server',
+	        },
+    }    
 }
 get_token()
 
