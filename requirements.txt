@@ -5,3 +5,5 @@ python-dotenv
 requests
 whitenoise
 azure-identity
+mssql-django
+pyodbc
